@@ -143,13 +143,19 @@
 | beacon_holder | 个人主页（需密码C解锁），主页有踩点帖可点击进入（extra3） |
 | 霄汉 | 站长个人主页 |
 | Vega | Vega出现过的帖子列表 |
-| 其他 | 论坛搜索结果列表 |
-| 不相关词 | "未搜索到相关内容" |
 
 ### 实现规范
 - 搜索框位于导航栏右侧，全局可见
-- 回车后先匹配触发搜索列表（大小写不敏感）→ 命中则跳转外部独立页面
-- 未命中则显示站内搜索结果页
+- 点击搜索框时，下方展开白色下拉面板
+  - **未输入时：** 显示历史搜索记录（`search_history`），按时间倒序排列，每条记录右侧有"×"可单独删除；点击某条历史记录 → 自动填入搜索框并显示对应结果
+  - **输入关键词后回车：** 匹配关键词表，下拉面板显示对应结果
+- 匹配规则：输入词先做归一化处理（**转小写、去空格、去标点符号**），再与同样归一化后的关键词做**精确对比**——不进行子串匹配、不进行模糊匹配
+- 匹配流程：
+  1. 先匹配触发搜索列表 → 命中则显示对应页面名称，可点击跳转
+  2. 未命中则匹配普通搜索关键词表 → 命中则显示对应站内结果，可点击跳转
+  3. 均未命中 → 显示"No result"（灰色文字，不可点击，不记入历史）
+- 示例：搜索"beacon_holder" → 下拉面板显示"beacon_holder的个人主页"（可点击）
+- 仅命中关键词表的搜索词才追加到 `search_history`（去重，已存在则移至最前），无上限
 - 可搜索关键词在剧本中**加粗**，页面上不出现提示
 
 ---
@@ -168,9 +174,10 @@
 | `pw_f` | bool | false | 输对密码F | 解锁盲区存档Ⅱ |
 | `edit_log_visited` | bool | false | 进入编辑记录页 | 解锁月亮照片可点击 |
 | `bz2_visited` | bool | false | 进入盲区存档Ⅱ | 解锁"弃子"可点击 |
-| `completed` | bool | false | 触发结局 | 通关后搜索beacon_holder追加extra3旧帖结果 |
+| `completed` | bool | false | 触发结局（在㉘中选择后） | 允许访问结局页面（㉙/㉚） |
 | `ip` | string | 生成随机IP | 首次访问 | 监控日志最后一行显示 |
 | `path_log` | array[] | [] | 每次访问关键页面追加 | 监控日志列表 |
+| `search_history` | string[] | [] | 每次有效搜索（匹配关键词表）后追加 | 点击搜索框时下拉显示历史记录 |
 
 ### 关键交互条件
 
@@ -185,7 +192,7 @@
 | "希望我们不会像他一样遗憾" | 在存档Ⅰ页面 | →`/flight-path/`(extra5) |
 | "弃子" | `bz2_visited==true` | →`/statement/`(extra6) |
 | 关站公告回复链接 | 始终可点击 | →`/farewell/`(extra2) |
-| 搜索beacon_holder | 始终触发跳转 | →`/user/beacon_holder`（`completed==true`时主页踩点帖可查阅extra3） |
+| 搜索beacon_holder | 始终触发跳转 | →`/user/beacon_holder`（密码C解锁后主页踩点帖可查阅extra3） |
 | 404确定按钮 | 始终可点击 | 5次文字→重定向首页 |
 | 站内信关闭 | 最终档案阅读完毕 | 展示监控日志+选择面板 |
 
@@ -195,6 +202,7 @@
 
 ### 5.1 论坛首页 `/`
 - 导航栏：四个版块链接 + 搜索框（右侧显著位置）
+- 点击搜索框时下拉显示 `search_history`（最近有效搜索词，去重）
 - 无需注册/登录
 - 页脚：`© 2014-2016 夜航. All rights reserved.「 第三航次 」`
 
@@ -292,19 +300,28 @@
 
 ---
 
-## 七、技术栈建议
+## 七、技术栈决定
 
-| 项目 | 推荐 | 备注 |
+| 项目 | 决定 | 说明 |
 |------|------|------|
-| 框架 | 原生HTML+CSS+JS / React / Vue | 纯前端，无后端 |
-| 路由 | 前端路由 | 模拟多页面 |
-| 状态 | localStorage | 保存进度 |
-| 图片查看 | CSS裁切+全尺寸切换 | 裁切→可点击→全尺寸 |
-| 密码工具 | JS字符串处理（波利比奥斯5×5网格） | 输入A→输出F |
-| 弹窗/模态框 | CSS | 密码输入、站内信、死讯 |
-| 搜索 | 前端关键词→URL映射 | 大小写不敏感 |
+| 构建工具 | **Vite** + TypeScript | 零配置生产构建，自动 tree-shaking + 变量名 mangling |
+| 框架 | **原生 TypeScript**（无框架依赖） | 内容展示型页面占多数，重型框架徒增体积 |
+| 路由 | 前端路由（History API） | 模拟多页面切换，SPA 模式 |
+| 状态 | localStorage（编码存储） | 见第九节·防窥探方案 |
+| 密码验证 | **SHA-256 哈希比对** | 源码中不出现密码明文，见第九节 |
+| 图片查看 | CSS 裁切 + 全尺寸切换 | 裁切→可点击→全尺寸 |
+| 密码工具 | JS 波利比奥斯 5×5 网格 | 输入密码A→输出密码F |
+| 弹窗/模态框 | CSS 纯样式 | 密码输入、站内信、死讯 |
+| 搜索 | 前端关键词→URL 映射 | 大小写不敏感，分触发搜索 / 普通搜索两级 |
 | 404 | 前端通配路由 | 捕获所有未匹配路径 |
-| 适配 | 响应式设计 | 支持触屏 |
+| 适配 | 响应式 CSS | 支持桌面 + 移动端触屏 |
+
+### 为什么是 Vite + 原生 TypeScript
+
+- **30 个页面**中 80% 是内容展示型（帖子、公告、档案），不需要响应式框架的运行时
+- Vite 的 Rollup 构建对 TypeScript 做**变量名 mangling**（`passwordHashA` → `a` → `x`），天然增加源码阅读难度
+- TypeScript 的类型系统让密码哈希、状态管理等逻辑在开发阶段更可靠，构建后类型信息被完全擦除
+- 无需配置，`npm create vite@latest . -- --template vanilla-ts` 即可启动
 
 ---
 
@@ -313,13 +330,104 @@
 | # | 事项 | 状态 |
 |---|------|------|
 | 1 | 最终档案的路径名（盲区存档Ⅱ中"路径X"的具体值） | ⏳ 待定 |
-| 2 | 纯前端下如何防直接访问最终档案路径 | ⏳ 待定 |
+| 2 | 防直接访问最终档案路径——密码D校验 + localStorage状态检查 | ✅ 方案已定（见第九节·页面访问控制） |
 | 3 | 月亮照片裁切的具体尺寸比例 | ⏳ 待定 |
 | 4 | 是否需要音效/背景音乐 | ⏳ 待定 |
 | 5 | 移动端触屏缩放的具体要求 | ⏳ 待定 |
 | 6 | 论坛帖子的模拟数据量（深空50+候机室30的具体内容） | ⏳ 待定 |
 | 7 | 部署方案（Vercel/Netlify/纯静态） | ⏳ 待定 |
 | 8 | 搜索"Vega"时返回的具体帖子列表内容 | ⏳ 待定 |
+
+---
+
+## 九、防窥探方案
+
+纯前端无法彻底阻止 DevTools 或直接请求，但以下三层方案可拦阻"顺手掀桌布"级别的窥探——即只会打开 F12 看明文、或在 Application 面板改值的玩家。
+
+### 9.1 密码存哈希（核心）
+
+六个密码的明文**不出现**在源码中。源码只存 SHA-256 哈希值，用户输入后先哈希再比对。
+
+```typescript
+// 源码中只出现预计算的 SHA-256 哈希（32字节十六进制串）
+const PASSWORD_HASHES: Record<string, string> = {
+  A: '8c6f7a...ae3b',  // "Vol de Nuit" 的 SHA-256
+  B: 'd41d8c...9f7e',  // "道路一旦开辟，就不能不去追寻。" 的 SHA-256
+  C: 'e99a18...a3d6',  // 站长完整生日的 SHA-256
+  D: 'a1b2c3...f0e1',  // 拼合邮箱的 SHA-256
+  E: 'f6f8b5...c2a4',  // 隼的死亡日期的 SHA-256
+  F: 'b4c9e7...d1f3',  // 波利比奥斯反向解密结果的 SHA-256
+}
+
+async function checkPassword(id: string, input: string): Promise<boolean> {
+  const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input))
+  const hex = Array.from(new Uint8Array(hash))
+    .map(b => b.toString(16).padStart(2, '0')).join('')
+  return hex === PASSWORD_HASHES[id]
+}
+```
+
+**效果：** 打开 Sources 面板搜 `Vol de Nuit` 搜不到任何结果。哈希值本身不可逆。
+
+### 9.2 localStorage 编码存储
+
+防止玩家直接在 Application 面板中将 `nf_pw_a` 改为 `true` 跳过解谜。
+
+```typescript
+// 写入时：编码 + 校验标记
+function setProgress(key: string, val: boolean): void {
+  const entry = {
+    v: val,
+    t: Date.now(),
+    c: btoa(key + ':' + (val ? '1' : '0')),  // 简单校验
+  }
+  localStorage.setItem('nf_' + key, JSON.stringify(entry))
+}
+
+// 读取时：校验标记完整性，篡改视为未解锁
+function getProgress(key: string): boolean {
+  const raw = localStorage.getItem('nf_' + key)
+  if (!raw) return false
+  try {
+    const entry = JSON.parse(raw)
+    const expected = btoa(key + ':' + (entry.v ? '1' : '0'))
+    if (entry.c !== expected) return false  // 标记不匹配 → 数据被篡改
+    return entry.v
+  } catch {
+    return false
+  }
+}
+```
+
+**效果：** Application 面板中看到的不再是 `nf_pw_a: true`，而是一段 JSON。直接改值为 `true` 会被校验拦截。
+
+### 9.3 页面访问控制
+
+即使玩家通过 URL 直接跳转（或 curl 请求）访问受密码保护的页面，也会因状态缺失而被拦截：
+
+| 页面 | 防护条件 | 不满足时的行为 |
+|------|---------|--------------|
+| `/edit-log/cellar` | `pw_a == true` | 重定向首页 |
+| `/user/beacon_holder` | `pw_c == true` | 显示"用户不存在"404 |
+| `/user/gambit` | `pw_c == true` | 显示"用户不存在"404 |
+| `/user/gambit/archive` | `pw_c == true` | 显示"用户不存在"404 |
+| `/user/vega` | `pw_c == true` | 显示"用户不存在"404 |
+| `/blindzone/entry/1` | `pw_e == true` | 重定向 `/board/blindzone` 重新输密码 |
+| `/blindzone/entry/2` | `pw_f == true` | 重定向 `/board/blindzone` 重新输密码 |
+| `/final-archive` | `pw_d == true` | 显示空白页 + 标题"404 Not Found" |
+| `/ending/disclose` | `completed == true` | 重定向首页 |
+| `/ending/silence` | `completed == true` | 重定向首页 |
+
+错误行为统一为**叙事断裂**（404、空白页、重定向），而非弹窗提示"你没有权限"——保持沉浸感，且不泄露有受保护页面存在。
+
+### 9.4 分层防御总览
+
+| 层 | 方案 | 代码量 | 拦截目标 |
+|---|------|--------|---------|
+| 第一层 | 9.1 密码哈希比对 | ~15 行 | 🔒 搜密码明文 |
+| 第二层 | 9.2 localStorage 编码校验 | ~20 行 | 🔒 改 Application 值跳过解谜 |
+| 第三层 | 9.3 页面访问守卫 | 每页 ~5 行 | 🔒 直接 URL 访问受保护页面 |
+| 零成本 | Vite 构建 mangling + tree-shaking | 0 行 | 🔒 函数名/变量名可读性 |
 
 ---
 
