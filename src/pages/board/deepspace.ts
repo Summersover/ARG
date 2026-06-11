@@ -61,7 +61,7 @@ const THREADS: ThreadData[] = [
   { id: 'crying-building', title: '老城区拆迁楼里的哭声，有谁听过？', author: 'flight左岸', replies: 8, views: 876, lastAuthor: '林小夕', lastTime: randomDate() },
 
   // ---- 可点击（解谜链关键帖） ----
-  { id: 'exploration', title: '阳光新城旁废弃危房区探险', author: '往事随_风', replies: 23, views: 1856, lastAuthor: '隼', lastTime: '2016-03-14', clickable: true, route: '/post/exploration', hot: true },
+  { id: 'exploration', title: '阳光新城旁废弃危房区探险', author: '往事随_风', replies: 10, views: 1856, lastAuthor: '往事随_风', lastTime: '2016-08-16', clickable: true, route: '/post/exploration', hot: true },
 
   { id: 'school-well', title: '突然收到了陌生人的葬礼邀请函，主持人是死者本人。。。', author: 'fguwaeri', replies: 42, views: 3201, lastAuthor: 'rain_invein', lastTime: randomDate(), hot: true },
   { id: 'mirror-move', title: '我家的镜子会自己移动，已持续三个月', author: '午夜阳光', replies: 31, views: 2100, lastAuthor: '永不空军的钓鱼', lastTime: randomDate() },

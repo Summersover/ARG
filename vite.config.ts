@@ -13,6 +13,8 @@ export default defineConfig({
         lounge: resolve(__dirname, 'board/lounge.html'),
         founding: resolve(__dirname, 'post/founding.html'),
         shutdown: resolve(__dirname, 'post/shutdown.html'),
+        howold: resolve(__dirname, 'post/how-old.html'),
+        favesentence: resolve(__dirname, 'post/favorite-sentence.html'),
         blindzone: resolve(__dirname, 'board/blindzone.html'),
         exploration: resolve(__dirname, 'post/exploration.html'),
         cellar: resolve(__dirname, 'post/cellar.html'),

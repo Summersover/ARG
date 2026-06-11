@@ -49,14 +49,14 @@ const THREADS: ThreadData[] = [
 
   // ---- 第一页（1~15）：含两个关键帖 ----
   { id: 'lounge-1', title: '好想半夜跑出去唱K然后漫无目的乱逛啊', author: '小心花仙炮', replies: 12, views: 876, lastAuthor: '芝士', lastTime: randomDate() },
-  { id: 'how-old', title: '站长多大了', author: '二北', replies: 22, views: 2100, lastAuthor: '霄汉', lastTime: '2014-07-03', clickable: true, route: '/post/how-old' },
+  { id: 'how-old', title: '站长多大了', author: '二北', replies: 6, views: 2100, lastAuthor: '蓝色雨', lastTime: '2015-05-11', clickable: true, route: '/post/how-old' },
   { id: 'lounge-2', title: '大家周末一般做什么', author: '别再迷恋哥', replies: 56, views: 4321, lastAuthor: '蓝色雨', lastTime: randomDate(), hot: true },
   { id: 'lounge-3', title: '居酒屋下次去哪里happy', author: '钱憨', replies: 38, views: 2987, lastAuthor: '花花❀', lastTime: randomDate() },
   { id: 'lounge-4', title: '这次能上岸吗球球了', author: '青空落', replies: 9, views: 654, lastAuthor: '阿信', lastTime: randomDate() },
   { id: 'lounge-5', title: '深夜报社——发一下你手机里最好吃的一张图', author: 'deahwi098', replies: 67, views: 5678, lastAuthor: '雪落无痕', lastTime: randomDate(), hot: true },
   { id: 'lounge-6', title: '好怀念本科时在南楼的日子', author: '大叶黄杨堡', replies: 31, views: 2345, lastAuthor: '觉来江南犹一梦', lastTime: randomDate() },
   { id: 'lounge-7', title: '你们会删掉以前发的朋友圈吗', author: '匆匆过客', replies: 24, views: 1876, lastAuthor: 'Alan', lastTime: randomDate() },
-  { id: 'favorite-sentence', title: '大家最喜欢的句子', author: '麦麦', replies: 45, views: 3678, lastAuthor: 'Vega', lastTime: '2016-08-15', clickable: true, route: '/post/favorite-sentence' },
+  { id: 'favorite-sentence', title: '大家最喜欢的句子', author: '麦麦', replies: 8, views: 3678, lastAuthor: '钱憨', lastTime: '2016-08-15', clickable: true, route: '/post/favorite-sentence' },
   { id: 'lounge-8', title: '最近在单曲循环的一首歌', author: 'blueberry', replies: 43, views: 3456, lastAuthor: '风行者', lastTime: randomDate(), hot: true },
   { id: 'lounge-9', title: '北京实在是太美食荒漠了有没有懂的', author: '精神川湘人', replies: 17, views: 1234, lastAuthor: '凉笙', lastTime: randomDate() },
   { id: 'lounge-10', title: '可以不上班在草坪听一晚上歌吗', author: 'C303谁没来', replies: 28, views: 2100, lastAuthor: '栀', lastTime: randomDate() },

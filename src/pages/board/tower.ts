@@ -31,7 +31,7 @@ interface ThreadData {
 
 const THREADS: ThreadData[] = [
   // ---- 置顶（关站公告） ----
-  { id: 'shutdown', title: '因个人原因，夜航将于2016年10月1日零时起停止运营', author: '霄汉', replies: 23, views: 1890, lastAuthor: '霄汉', lastTime: '2016-09-25', sticky: true, clickable: true, route: '/post/shutdown' },
+  { id: 'shutdown', title: '因个人原因，夜航将于2016年10月1日零时起停止运营', author: '霄汉', replies: 5, views: 1890, lastAuthor: '冷眼', lastTime: '2016-09-25', sticky: true, clickable: true, route: '/post/shutdown' },
 
   // ---- 中间公告（不可点击） ----
   { id: 'server-maintain', title: '关于近期服务器维护的通知', author: '霄汉', replies: 3, views: 456, lastAuthor: '霄汉', lastTime: '2016-08-15' },
