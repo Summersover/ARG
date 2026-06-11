@@ -155,6 +155,7 @@ function initPasswordModal(): void {
       addPathLog('密码A正确 → 进入编辑记录')
       window.location.href = '/edit-log/cellar'
     } else {
+      error.textContent = '密码错误。提示：站长最喜欢的书？'
       error.classList.remove('hidden')
       input.select()
     }

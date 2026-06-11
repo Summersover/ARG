@@ -674,19 +674,8 @@ ul {
   color: #3A5060;
   margin-left: 6px;
 }
-
-/* ---- Password Overlay ---- */
-#password-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+/* ---- Password Overlay (cellar style) ---- */
+#password-overlay {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  background: rgba(0, 0, 0, 0.65);  z-index: 10000;  display: flex;  align-items: center;  justify-content: center;}
 
 #password-overlay.hidden {
   display: none;
@@ -694,115 +683,89 @@ ul {
 
 #password-modal {
   width: 380px;
-  background: #0E1525;
-  border: 1px solid #1A283A;
-  border-top: 2px solid #3A6078;
-  border-radius: 6px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  animation: modalIn 0.2s ease-out;
-}
-
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  background: #0E1622;
+  border: 1px solid #1A2D4A;
+  border-top: 3px solid #2A4060;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 .modal-header {
-  padding: 14px 20px;
-  background: linear-gradient(180deg, #121C2E 0%, #0A0E18 100%);
-  color: #C8BEA8;
-  font-size: 15px;
+  padding: 12px 16px;
+  font-size: 13px;
   font-weight: bold;
+  color: #E8DCC4;
+  background: #0A1220;
+  border-bottom: 1px solid #1A2A3A;
 }
 
 .modal-body {
-  padding: 20px;
+  padding: 16px;
 }
 
 .modal-body p {
-  font-size: 13px;
-  color: #4A6070;
+  font-size: 12.5px;
+  color: #4A6A7A;
   margin-bottom: 12px;
+  line-height: 1.6;
 }
 
 #password-input {
   width: 100%;
-  height: 36px;
-  padding: 0 12px;
-  border: 1px solid #1A283A;
-  border-radius: 4px;
-  background: #0A0E18;
-  color: #9AABB8;
-  font-size: 14px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid #1A2D4A;
+  background: #080E18;
+  color: #B8C4D0;
+  font-size: 13px;
   font-family: inherit;
   outline: none;
-  transition: border-color 0.15s;
 }
 
 #password-input:focus {
-  border-color: #3A6078;
-  box-shadow: 0 0 0 2px rgba(58, 96, 120, 0.15);
+  border-color: #2A4060;
 }
 
 #password-error {
-  color: #D06040;
+  color: #C06A6A;
   font-size: 12px;
-  margin-top: 8px;
+  margin-top: 6px;
   margin-bottom: 0;
-  animation: shake 0.3s ease-in-out;
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
 }
 
 .modal-footer {
-  padding: 12px 20px;
-  background: #0A101E;
-  border-top: 1px solid #1A283A;
+  padding: 10px 16px;
+  border-top: 1px solid #1A2A3A;
   display: flex;
-  justify-content: flex-end;
   gap: 8px;
-}
-
-.modal-footer button {
-  padding: 7px 20px;
-  border: 1px solid #1A283A;
-  border-radius: 4px;
-  font-size: 13px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.12s;
+  justify-content: flex-end;
 }
 
 #password-cancel {
-  background: #0E1525;
-  color: #4A6070;
+  padding: 5px 16px;
+  border: 1px solid #1A2D4A;
+  background: #0E1622;
+  color: #4A6A7A;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 #password-cancel:hover {
-  background: #121C2E;
+  background: #1E2A3A;
 }
 
 #password-confirm {
-  background: linear-gradient(180deg, #1A283A 0%, #121C2E 100%);
-  color: #C8BEA8;
-  border-color: #2A3A4A;
+  padding: 5px 16px;
+  border: 1px solid #2A4060;
+  background: #1A2D4A;
+  color: #E8DCC4;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 #password-confirm:hover {
-  background: linear-gradient(180deg, #1A283A 0%, #1A283A 100%);
+  background: #3A5A7A;
 }
 
 /* ---- Footer ---- */

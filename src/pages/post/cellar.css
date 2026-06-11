@@ -489,6 +489,12 @@ ul {
   margin-bottom: 0;
 }
 
+/* 线索高亮（阳光新城等可搜索关键词） */
+.post-body .clue-highlight {
+  color: #D0A040;
+  font-weight: bold;
+}
+
 /* Photo Grid */
 .photo-grid {
   display: grid;

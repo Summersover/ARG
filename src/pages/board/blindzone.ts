@@ -346,7 +346,7 @@ function init(): void {
     // 未解锁 → 注册解锁按钮
     const unlockBtn = document.getElementById('unlock-btn')!
     unlockBtn.addEventListener('click', () => {
-      showPasswordOverlay('请输入密钥以解锁盲区（提示：月亮照片上的日期）', 'E', '', () => {
+      showPasswordOverlay('请输入密钥以解锁盲区', 'E', '', () => {
         unlock('pw_e')
         addPathLog('盲区 → 密码E解锁')
         toggleLockState()
