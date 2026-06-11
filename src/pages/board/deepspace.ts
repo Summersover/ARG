@@ -130,7 +130,7 @@ function renderThreads(): void {
 
       if (clickable && route) {
         addPathLog(`深空版块 → 点击帖子: ${(el as HTMLElement).textContent?.trim()}`)
-        window.location.href = route
+        window.open(route, '_blank')
       } else {
         // Non-clickable: show a subtle dead-end toast
         showToast('该帖子暂无更多内容可查看')

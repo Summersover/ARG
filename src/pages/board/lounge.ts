@@ -135,7 +135,7 @@ function renderThreads(): void {
 
       if (clickable && route) {
         addPathLog(`候机室版块 → 点击帖子: ${(el as HTMLElement).textContent?.trim()}`)
-        window.location.href = route
+        window.open(route, '_blank')
       } else {
         showToast('该帖子暂无更多内容可查看')
       }

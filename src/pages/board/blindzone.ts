@@ -133,7 +133,7 @@ function renderThreads(): void {
       const unlocked = isPasswordUnlocked(pwId)
       if (unlocked) {
         addPathLog(`盲区版块 → 点击帖子: ${(el as HTMLElement).textContent?.trim()}`)
-        window.location.href = route
+        window.open(route, '_blank')
       } else {
         showPasswordOverlay(pwPrompt, pwId, route, () => {
           const stateKey = ('pw_' + pwId.toLowerCase()) as 'pw_e' | 'pw_f'
