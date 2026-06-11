@@ -11,6 +11,8 @@ export default defineConfig({
         deepspace: resolve(__dirname, 'board/deepspace.html'),
         tower: resolve(__dirname, 'board/tower.html'),
         lounge: resolve(__dirname, 'board/lounge.html'),
+        founding: resolve(__dirname, 'post/founding.html'),
+        shutdown: resolve(__dirname, 'post/shutdown.html'),
         blindzone: resolve(__dirname, 'board/blindzone.html'),
         exploration: resolve(__dirname, 'post/exploration.html'),
         cellar: resolve(__dirname, 'post/cellar.html'),
