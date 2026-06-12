@@ -26,6 +26,8 @@ export default defineConfig({
         vega: resolve(__dirname, 'user/vega.html'),
         blindzoneEntry1: resolve(__dirname, 'blindzone/entry/1.html'),
         blindzoneEntry2: resolve(__dirname, 'blindzone/entry/2.html'),
+        missing: resolve(__dirname, 'external/missing.html'),
+        zhengzao: resolve(__dirname, 'external/zhengzao.html'),
         polybius: resolve(__dirname, 'post/polybius.html'),
         polybiusTool: resolve(__dirname, 'polybius-tool.html'),
       },

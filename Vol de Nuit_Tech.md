@@ -13,7 +13,7 @@
 | **A** | Vol de Nuit | 塔台创站公告：书名 | 解锁⑬编辑记录 | 8.3 / 8.4 |
 | **B** | 道路一旦开辟，就不能不去追寻。 | ⑬编辑记录底部Vega小尾巴 | 解锁⑲Vega个人简介 | 8.6 / 9.1 |
 | **C** | 19930629 | ⑦创站公告日期+⑨年份推算（站长1993年6月29日生，圣埃克苏佩里诞辰） | 解锁⑭/⑮/⑲用户主页 | 8.4 / 8.7 |
-| **D** | sbire@zhengye.com.cn（拼合） | 前半段sbire（⑭）+ 后半段@zhengye.com.cn（㉗） | 解锁㉘最终档案 | 10.2 |
+| **D** | sbire@zhengzao.com.cn（拼合） | 前半段sbire（⑭）+ 后半段@zhengzao.com.cn（㉗） | 解锁㉘最终档案 | 10.2 |
 | **E** | 20160924 | ⑪月亮照片右下角水印（即隼被杀日期） | 解锁盲区版块 | 9.2 |
 | **F** | 513431141533452444 | ㉒工具页：密码A经波利比奥斯5×5方阵加密 | 解锁盲区存档Ⅱ | 9.4 |
 
@@ -86,9 +86,9 @@
 |------|------|--------|------|
 | `/external/news` | **⑫** | 阳光新城 | 仿本地新闻网站 |
 | `/external/missing` | **㉔** | 徐山 | 仿警方档案页面 |
-| `/external/zhengye` | **㉕** | 正业集团 | 仿地产公司官网 |
-| `/external/zhengye/recruitment` | **㉖** | 正业招聘 2013 | 仿招聘存档（列表页） |
-| `/external/zhengye/recruitment/2013` | **㉗** | — | 2013年行政助理招聘详情页（含周经理邮箱后半段） |
+| `/external/zhengzao` | **㉕** | 正造集团 | 仿地产公司官网 |
+| `/external/zhengzao/recruitment` | **㉖** | 正造招聘 2013 | 仿招聘存档（列表页） |
+| `/external/zhengzao/recruitment/2013` | **㉗** | — | 2013年行政助理招聘详情页（含周经理邮箱后半段） |
 
 ### 2.6 彩蛋页
 
@@ -126,9 +126,9 @@
 | 关键词 | 路由 |
 |--------|------|
 | 阳光新城 | `/external/news` |
-| 正业集团 | `/external/zhengye` |
+| 正造集团 | `/external/zhengzao` |
 | 徐山 | `/external/missing` |
-| 正业招聘 2013 | `/external/zhengye/recruitment` |
+| 正造招聘 2013 | `/external/zhengzao/recruitment` |
 | Vol de Nuit / VoldeNuit / vol de nuit / voldenuit / 夜航 | `/saint-exupery/`（extra1） |
 | 徐天 | `/memoir/xutian`（extra7） |
 
@@ -304,10 +304,10 @@
 | 页面 | 关键设计要点 |
 |------|------------|
 | 新闻报道 `/external/news` | 仿本地新闻网站；标题"阳光新城小区发生命案"；2016-09-24 |
-| 企业介绍 `/external/zhengye` | 仿地产官网；含阳光新城项目；底部导航含招聘入口 |
-| 招聘存档 `/external/zhengye/recruitment` | 仿招聘存档列表页；含多条启事 |
-| 招聘详情 `/external/zhengye/recruitment/2013`（㉗） | 仿招聘公告详情页；联系人周经理；邮箱后半段 |
-| 失踪档案 `/external/missing` | 仿警方档案页；徐山基本信息；评论提正业集团 |
+| 企业介绍 `/external/zhengzao` | 仿地产官网；含阳光新城项目；底部导航含招聘入口 |
+| 招聘存档 `/external/zhengzao/recruitment` | 仿招聘存档列表页；含多条启事 |
+| 招聘详情 `/external/zhengzao/recruitment/2013`（㉗） | 仿招聘公告详情页；联系人周经理；邮箱后半段 |
+| 失踪档案 `/external/missing` | 仿警方档案页；徐山基本信息；评论提正造集团 |
 | 百科页 `/saint-exupery/`(extra1) | 仿网络百科；含关联条目"夜航论坛"可点击进入深空版块 |
 
 ---
@@ -349,6 +349,25 @@
 | 6 | 论坛帖子的模拟数据量（深空50+候机室30的具体内容） | ⏳ 待定 |
 | 7 | 部署方案（Vercel/Netlify/纯静态） | ⏳ 待定 |
 | 8 | 搜索"Vega"时返回的具体帖子列表内容 | ⏳ 待定 |
+| 9 | 正造集团官网所需实景照片素材 | ✅ 5张需求已记录 |
+
+### 正造集团官网 — 实景照片素材清单
+
+页面位于 `external/zhengzao.html`，共需 5 张实景建筑照片：
+
+| # | 位置 | 用途 | 建议尺寸 | 建议风格 | CSS 替换位置 |
+|---|------|------|---------|---------|------------|
+| 1 | Hero 背景 | 阳光新城小区鸟瞰/建筑外景 | 1920×560px+，宽高比>3:1 | 城市天际线/住宅鸟瞰，偏暗或冷色调，便于白色文字叠加 | `#hero-bg` 的 `background` |
+| 2 | 关于正造 | 集团总部/办公楼外观 | 400×300px+，4:3比例 | 明亮通透的建筑外景/玻璃幕墙 | `.about-img-placeholder` 的 `background` |
+| 3 | 项目卡片① | 阳光新城实景 | 360×180px+ | 住宅小区外景/园林，暖色调 | `.project-card:nth-child(1) .project-img` 的 `background` |
+| 4 | 项目卡片② | 正造大厦实景 | 360×180px+ | 写字楼玻璃幕墙，冷色调 | `.project-card:nth-child(2) .project-img` 的 `background` |
+| 5 | 项目卡片③ | 正造广场实景 | 360×180px+ | 商业综合体/商场入口，暖色调 | `.project-card:nth-child(3) .project-img` 的 `background` |
+
+替换方式：将对应 CSS 的 `background` 从渐变色改为 `url('/images/zhengzao/xxx.jpg') center center / cover no-repeat;`。
+
+照片存放路径：项目根目录下的 `public/images/zhengzao/` 文件夹（如不存在则新建）。该目录下的文件在构建后会被复制到 `dist/images/zhengzao/`，可通过 `/images/zhengzao/xxx.jpg` 访问。
+
+Hero 可保留 `#hero-overlay` 渐变层叠提升文字可读性。
 
 ---
 

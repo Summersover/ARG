@@ -21,9 +21,9 @@ const TRIGGER_SEARCHES: SearchEntry[] = [
     label: '阳光新城小区新闻报道',
   },
   {
-    keywords: ['正业集团'],
-    route: '/external/zhengye',
-    label: '正业集团官网',
+    keywords: ['正造集团', '正造地产集团'],
+    route: '/external/zhengzao',
+    label: '正造集团官网',
   },
   {
     keywords: ['徐山'],
@@ -31,9 +31,9 @@ const TRIGGER_SEARCHES: SearchEntry[] = [
     label: '徐山失踪档案',
   },
   {
-    keywords: ['正业招聘 2013'],
-    route: '/external/zhengye/recruitment',
-    label: '正业集团招聘存档（2013）',
+    keywords: ['正造招聘 2013'],
+    route: '/external/zhengzao/recruitment',
+    label: '正造集团招聘存档（2013）',
   },
   {
     keywords: ['Vol de Nuit', 'VoldeNuit', 'vol de nuit', 'voldenuit', '夜航'],
