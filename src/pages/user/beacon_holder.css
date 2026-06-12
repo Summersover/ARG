@@ -618,7 +618,7 @@ ul {
 
 #hidden-trigger-text {
   font-size: 18px;
-  color: rgba(58, 80, 96, 0.40);
+  color: rgba(58, 80, 96, 0.55);
   letter-spacing: 6px;
   transition: color 0.2s;
 }

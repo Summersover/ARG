@@ -25,6 +25,7 @@ export default defineConfig({
         gambit: resolve(__dirname, 'user/gambit.html'),
         vega: resolve(__dirname, 'user/vega.html'),
         blindzoneEntry1: resolve(__dirname, 'blindzone/entry/1.html'),
+        polybius: resolve(__dirname, 'post/polybius.html'),
       },
       output: {
         entryFileNames: 'assets/[name].[hash].js',

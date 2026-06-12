@@ -1,39 +1,17 @@
 /**
- * 盲区存档Ⅰ — 页面⑳
- * 夜航论坛 · 盲区
+ * 波利比奥斯科普帖 — 页面㉑
+ * 夜航论坛 · 候机室版块
  *
- * 霄汉的第一份日志。密码E解锁后可见。
- * 底部折叠消息 → 密码F线索 + extra5入口。
+ * 科普：波利比奥斯方阵密码的原理与历史。
+ * 底部有链接指向独立的加解密工具页（㉒）。
  *
- * 与解谜链对齐：本页面为序号 ⑳，右下角显示 20/30
+ * 与解谜链对齐：本页面为序号 ㉑，右下角显示 21/30
  */
 
 import '../../shared/state'
 import { addPathLog, addSearchHistory, removeSearchHistory } from '../../shared/state'
 import { search as doSearch, getSearchHistory } from '../../shared/search'
 import type { SearchResult } from '../../shared/types'
-import { checkAccess } from '../../shared/guard'
-
-/* ============================================================
-   页面守卫
-   ============================================================ */
-
-function initGuard(): boolean {
-  const result = checkAccess(window.location.pathname)
-  if (!result.allowed) {
-    const denied = document.getElementById('access-denied')!
-    const content = document.getElementById('log-content')!
-    denied.classList.remove('hidden')
-    content.classList.add('hidden')
-
-    if (result.action === 'redirect-blindzone') {
-      // 显示拒绝信息，不自动跳转（让玩家有返回的路径）
-      addPathLog('盲区存档Ⅰ — 访问被拒绝（密码E未解锁）')
-    }
-    return false
-  }
-  return true
-}
 
 /* ============================================================
    搜索
@@ -147,33 +125,15 @@ function escapeHtml(str: string): string {
 }
 
 /* ============================================================
-   隐藏触发 + 弹窗（仿 beacon_holder 主页）
+   工具页链接
    ============================================================ */
 
-function initHiddenTrigger(): void {
-  const trigger = document.getElementById('hidden-trigger')!
-  const modal = document.getElementById('secret-modal')!
-  const closeBtn = document.getElementById('secret-close')!
-  const link = document.getElementById('flight-path-link')!
-
-  trigger.addEventListener('click', () => {
-    modal.classList.remove('hidden')
-    addPathLog('盲区存档Ⅰ → 点击隐藏触发点')
-  })
-
-  function closeModal(): void {
-    modal.classList.add('hidden')
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal()
-  })
-  closeBtn.addEventListener('click', closeModal)
-
+function initToolLink(): void {
+  const link = document.getElementById('polybius-tool-link')!
   link.addEventListener('click', (e) => {
     e.preventDefault()
-    addPathLog('盲区存档Ⅰ → 希望我们不会像他一样遗憾（航线图）')
-    window.open('/flight-path/', '_blank')
+    addPathLog('波利比奥斯科普帖 → 进入加解密工具页')
+    window.open('/polybius-tool', '_blank')
   })
 }
 
@@ -182,15 +142,10 @@ function initHiddenTrigger(): void {
    ============================================================ */
 
 function init(): void {
-  addPathLog('进入盲区存档Ⅰ（页面⑳）')
-
-  const allowed = initGuard()
+  addPathLog('进入波利比奥斯科普帖（页面㉑）')
 
   initSearch()
-
-  if (allowed) {
-    initHiddenTrigger()
-  }
+  initToolLink()
 
   window.scrollTo(0, 0)
 }
