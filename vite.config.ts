@@ -28,6 +28,8 @@ export default defineConfig({
         blindzoneEntry2: resolve(__dirname, 'blindzone/entry/2.html'),
         missing: resolve(__dirname, 'external/missing.html'),
         zhengzao: resolve(__dirname, 'external/zhengzao.html'),
+        zhengzaoRecruit: resolve(__dirname, 'external/zhengzao/recruitment.html'),
+        zhengzaoRecruit2013: resolve(__dirname, 'external/zhengzao/recruitment-2013.html'),
         polybius: resolve(__dirname, 'post/polybius.html'),
         polybiusTool: resolve(__dirname, 'polybius-tool.html'),
       },

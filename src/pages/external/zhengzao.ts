@@ -11,16 +11,9 @@ import { addPathLog } from '../../shared/state'
 function init(): void {
   addPathLog('进入外部页面: 正造集团官网')
 
-  // 阻止导航链接实际跳转
-  document.querySelectorAll('.hn-item, .fl-item').forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault()
-    })
-  })
-
   // 招聘公告链接 → ㉖
   const recruitLinks = [
-    document.getElementById('recruitment-link'),
+    document.getElementById('nav-recruit'),
     document.getElementById('recruit-btn'),
     document.getElementById('footer-recruit-link'),
   ]

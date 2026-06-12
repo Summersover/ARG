@@ -679,3 +679,21 @@ a {
   color: #D0A040 !important;
   font-weight: bold;
 }
+
+/* ---- Page Counter ---- */
+#page-counter {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  padding: 4px 10px;
+  letter-spacing: 0.5px;
+  user-select: none;
+  pointer-events: none;
+}
