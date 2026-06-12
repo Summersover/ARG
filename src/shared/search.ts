@@ -66,6 +66,11 @@ const NORMAL_SEARCHES: SearchEntry[] = [
     label: 'beacon_holder的个人主页',
   },
   {
+    keywords: ['Gambit', 'gambit'],
+    route: '/user/gambit',
+    label: 'Gambit的个人主页',
+  },
+  {
     keywords: ['Vega'],
     route: '/post/favorite-sentence',
     label: '大家最喜欢的句子（Vega在该帖中出现）',

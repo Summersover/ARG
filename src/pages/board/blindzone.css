@@ -449,14 +449,7 @@ ul {
   text-decoration: underline;
 }
 
-.thread-link.clickable-highlight {
-  color: #8A7A5A;
-  font-weight: bold;
-}
 
-.thread-link.clickable-highlight:hover {
-  color: #E0B040;
-}
 
 .thread-meta {
   display: block;

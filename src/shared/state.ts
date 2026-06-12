@@ -1,5 +1,6 @@
 import type { StateKey, StateTypes } from './types'
 import { getStorage, setStorage, clearAllStorage } from './storage'
+import './highlight.css'
 
 /* ---- 内部工具 ---- */
 

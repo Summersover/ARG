@@ -386,14 +386,7 @@ ul {
   color: #5A7A8A;
 }
 
-.thread-link.clickable-highlight {
-  color: #C8A87A;
-  font-weight: bold;
-}
 
-.thread-link.clickable-highlight:hover {
-  color: #E0B040;
-}
 
 .thread-sticky .thread-link {
   color: #6E8E9E;

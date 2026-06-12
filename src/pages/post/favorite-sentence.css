@@ -489,13 +489,9 @@ ul {
   margin-bottom: 0;
 }
 
-/* 线索高亮（地窖等关键词） */
-.post-body .clue-highlight {
-  color: #D0A040;
-  font-weight: bold;
-}
 
-/* 可点击用户名链接（Vega等角色） */
+
+/* 可点击用户名链接（Vega等角色） — 复用线索高亮色 */
 .pui-name .user-link {
   color: #D0A040;
   font-weight: bold;
@@ -503,7 +499,7 @@ ul {
 }
 
 .pui-name .user-link:hover {
-  color: #E0B050;
+  color: #E0B040;
   text-decoration: underline;
 }
 

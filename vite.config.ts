@@ -21,6 +21,8 @@ export default defineConfig({
         blindzone: resolve(__dirname, 'board/blindzone.html'),
         exploration: resolve(__dirname, 'post/exploration.html'),
         cellar: resolve(__dirname, 'post/cellar.html'),
+        beaconholder: resolve(__dirname, 'user/beacon_holder.html'),
+        gambit: resolve(__dirname, 'user/gambit.html'),
       },
       output: {
         entryFileNames: 'assets/[name].[hash].js',
