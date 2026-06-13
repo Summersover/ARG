@@ -128,9 +128,11 @@ a:active { color: #FAA700; }
   border-bottom: 1px solid #EAECF0;
 }
 
-.portrait-placeholder {
-  font-size: 36px;
-  color: #888;
+.portrait-img {
+  width: 180px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 2px;
 }
 
 .infobox th {

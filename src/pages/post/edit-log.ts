@@ -8,7 +8,7 @@
  */
 
 import '../../shared/state'
-import { addPathLog, addSearchHistory, removeSearchHistory } from '../../shared/state'
+import { addPathLog, addSearchHistory, removeSearchHistory, setState } from '../../shared/state'
 import { search as doSearch, getSearchHistory } from '../../shared/search'
 import type { SearchResult } from '../../shared/types'
 
@@ -130,6 +130,7 @@ function escapeHtml(str: string): string {
 
 function init(): void {
   addPathLog('进入编辑记录')
+  setState('edit_log_visited', true)
   initSearch()
   window.scrollTo(0, 0)
 }

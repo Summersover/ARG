@@ -491,12 +491,18 @@ ul {
 
 
 
-/* Photo Grid */
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+/* Photo Single */
+.photo-single {
   margin: 14px 0;
+  text-align: center;
+}
+
+.exploration-photo {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid #2A3A4A;
 }
 
 .photo-placeholder {

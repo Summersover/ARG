@@ -254,7 +254,7 @@ async function showPasswordGuard(): Promise<void> {
   cancelBtn.parentNode!.replaceChild(newCancel, cancelBtn)
 
   newConfirm.addEventListener('click', verify)
-  newCancel.addEventListener('click', () => overlay.classList.add('hidden'))
+  newCancel.addEventListener('click', () => { window.location.href = '/board/tower' })
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') verify() })
 }
 

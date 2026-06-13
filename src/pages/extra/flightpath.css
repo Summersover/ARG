@@ -68,11 +68,12 @@ body {
 .status-mia { color: #A08060; }
 
 /* ---- 地图区域 ---- */
-#map-area {
-  position: relative;
+#flight-map-img {
   width: 600px;
   height: 400px;
   margin: 20px 0;
+  object-fit: cover;
+  border-radius: 2px;
 }
 
 .map-label {

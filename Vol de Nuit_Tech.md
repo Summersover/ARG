@@ -466,16 +466,101 @@ function getProgress(key: string): boolean {
 
 
 
-照片：
-1.探险帖的照片：几栋废弃的民居。院墙半塌，铁门上锈迹斑斑。有一栋山墙已经爬满了藤蔓，窗户都用木板封死了。
-2.踩点帖的照片：图1另一个角度
-3.月亮照片
-4.圣埃克航线图
-5.地产集团背景图
-6.结局一报纸图
+## 附录：图片素材清单
 
-修改：
-1.霄汉的小尾巴改成第一航次===
-2.塔台版面关站帖不用高亮，没有线索信息===
-3.探险贴：这是我家的老宅不用加粗===
-4.
+所有图片统一放在 `public/images/` 目录下（需手动创建），在 HTML/CSS 中以 `/images/xxx.jpg` 引用。
+
+### 1. 探险帖照片（废弃老宅）
+
+替换页面：`post/exploration.html`·photo-grid 区的 4 个 `.photo-placeholder`
+
+| 文件名 | 用途 | AI 生图 Prompt |
+|--------|------|---------------|
+| `exploration.jpg` | 废弃老宅全景 | 中国废弃老宅，几栋废弃民居挤在一起，院墙半塌，铁门上锈迹斑斑，一栋山墙已爬满藤蔓，窗户用木板封死，下午阴暗光线，真实摄影风格，电影感色调 |
+
+文件路径：`public/images/exploration.jpg`  
+替换方式：修改 `post/exploration.html` 中的 `.photo-grid`，将整个 grid（4 个 `.photo-placeholder`）替换为 `<img class="exploration-photo" src="/images/exploration.jpg" alt="废弃老宅" />`。
+
+---
+
+### 2. 踩点帖照片（beacon_holder 随拍）
+
+替换页面：`post/scouting-2014.html`·`.scout-photos` 区的 2 个 `.photo-box`
+
+| 文件名 | 用途 | AI 生图 Prompt |
+|--------|------|---------------|
+| `scouting.jpg` | beacon_holder 随手拍的踩点照 | 从路口拍摄的一片待开发区域，前景是黄土路和杂草，远处有几栋老宅屋顶和在建楼盘塔吊，构图随意（像普通游客随手拍），2014年手机摄影风格，低饱和度，偏冷色调 |
+
+文件路径：`public/images/scouting.jpg`  
+替换方式：修改 `post/scouting-2014.html`，将 `.scout-photos` 内的两个 `.scout-photo` 替换为 `<img class="scout-photo-img" src="/images/scouting.jpg" alt="阳光新城周边" />`。
+
+---
+
+### 3. 月亮照片
+
+替换页面：`post/moon-photo.html`·`#moon-photo-cropped`（裁切缩略图）和 `#photo-viewer`（全尺寸查看器）
+
+| 文件名 | 用途 | AI 生图 Prompt |
+|--------|------|---------------|
+| `moon-thumb.jpg` | 帖子内裁切显示的小图 | 一轮满月，月面纹理清晰，深蓝黑色夜空，无云，月亮居中偏左，中焦镜头拍摄的感觉，高对比度，月面环形山可见 |
+| `moon-full.jpg` | 点击放大后的完整尺寸 | 同一轮满月，更高分辨率，月亮在画面中央偏左上留出右下角空间用于显示水印，月面纹理极其清晰，深空背景 |
+
+文件路径：`public/images/moon-thumb.jpg` ~ `moon-full.jpg`
+替换方式：
+- 缩略图：将 `#moon-photo-cropped` 内的内容替换为 `<img id="moon-thumb-img" src="/images/moon-thumb.jpg" alt="月亮照片" />`
+- 全尺寸：将 `#photo-viewer .viewer-moon` 内的内容替换为 `<img id="moon-full-img" src="/images/moon-full.jpg" alt="月亮照片（完整）" />`
+- 水印 `20160924` 建议在生图时直接嵌入图片右下角（在当前月面照片的右下角空白区域以半透明白色等宽字体添加 `20160924`）
+
+---
+
+### 4. 圣埃克苏佩里航线图
+
+替换页面：`flight-path/index.html`（目前使用 SVG 虚线航线）
+
+| 文件名 | 用途 | AI 生图 Prompt |
+|--------|------|---------------|
+| `flight-map.jpg` | 地中海区域航图背景 | 地中海中部海域的古旧航图风格，纸张泛黄带纹理，有经线纬线网格，从科西嘉岛到北非海岸的虚线航线，航海图标记，罗盘玫瑰，复古1940年代地图风格，鸟瞰视角，做旧纸张质感 |
+
+文件路径：`public/images/flight-map.jpg`  
+替换方式：替换 `flight-path/index.html` 中的 SVG 航线可视化为 `<img id="flight-map-img" src="/images/flight-map.jpg" alt="航线图" />`，原左上角 `#flight-info` 信息面板保留覆盖在地图上方。
+
+---
+
+### 5. 正造地产集团图片 ×5
+
+替换页面：`external/zhengzao.html`
+
+| 文件名 | 用途 | CSS 选择器 | AI 生图 Prompt |
+|--------|------|-----------|---------------|
+| `zhengzao-hero.jpg` | 首页大横幅（hero） | `#hero-bg` 的 `background-image` | 中国现代化住宅小区鸟瞰图，崭新的高层住宅楼群，绿化景观带，蓝天白云，傍晚暖金色光线，房地产宣传照风格，高饱和度，光照柔和，气势开阔 |
+| `zhengzao-about.jpg` | "关于正造"区配图 | `.about-img-placeholder` 的 `background-image` | 房地产集团总部写字楼外观，现代化玻璃幕墙建筑，前景有旗杆和企业标识，清晨光线，专业企业宣传摄影风格 |
+| `zhengzao-project-1.jpg` | 项目案例1·阳光新城 | `.project-card:nth-child(1) .project-img` 的 `background-image` | 已建成的住宅小区，多栋米色外墙高层住宅楼穿插绿化，小区入口有"阳光新城"字样门牌，日间自然光，实景拍摄风格 |
+| `zhengzao-project-2.jpg` | 项目案例2·水岸花园 | `.project-card:nth-child(2) .project-img` 的 `background-image` | 沿河景观住宅，低密度花园洋房，河岸步道，柳树，水中倒影，傍晚暖色调，宜居氛围 |
+| `zhengzao-project-3.jpg` | 项目案例3·北江国际 | `.project-card:nth-child(3) .project-img` 的 `background-image` | 城市 CBD 核心区的商业综合体，玻璃幕墙写字楼，底层商业裙楼，现代都市感，广角拍摄，冲击力强 |
+
+文件路径：`public/images/zhengzao-hero.jpg` 等  
+替换方式：
+- hero 图：修改 `external/zhengzao.html` 中 `#hero-bg` 的 style，添加 `background-image: url('/images/zhengzao-hero.jpg')`
+- about 图：修改 `external/zhengzao.html` 中 `.about-img-placeholder` 的 style
+- 项目图：分别修改对应 `.project-img` 的 `background-image`
+
+---
+
+### 6. 结局一报纸图
+
+替换页面：`ending/disclose.html`·`#newspaper-placeholder`
+
+| 文件名 | 用途 | AI 生图 Prompt |
+|--------|------|---------------|
+| `newspaper.jpg` | 结局一的报纸实物照片 | 一张平铺展开的中文报纸俯拍，报纸名称为"雾港晚报"，日期 2016年10月4日，头条标题为"阳光新城命案告破：死者身份确认，嫌疑人供述作案动机"，报纸纸张有轻微泛黄，新闻正文为正常中文排版（可用Lorem Ipsum替代），左上角报纸略微卷边，自然光照明 |
+
+文件路径：`public/images/newspaper.jpg`  
+替换方式：将 `ending/disclose.html` 中的 `#newspaper-placeholder` 整体替换为 `<img id="newspaper-img" src="/images/newspaper.jpg" alt="报纸" />`。
+
+---
+
+### 生图通用建议
+
+- **比例/尺寸**：所有图片建议 2:3 或 4:3 横图，分辨率不低于 1024×768（月亮照片和报纸图建议 1920×1080）
+- **风格**：探险帖/踩点帖照片追求真实感（手机摄影/纪实风）；正造图片追求企业宣传照风格；航线图追求复古手绘地图风格
+- **文字处理**：生图工具通常不擅长生成中文字，报纸图建议用无文案版本出图后在 PS 中后期添加文字

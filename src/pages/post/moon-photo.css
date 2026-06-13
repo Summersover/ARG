@@ -823,6 +823,7 @@ ul {
 /* ---- 月亮照片（裁切显示） ---- */
 #moon-photo-container {
   margin: 16px 0;
+  text-align: center;
 }
 
 .moon-clickable {
@@ -840,27 +841,37 @@ ul {
 }
 
 .photo-placeholder-box {
-  width: 280px;
-  height: 200px;
-  border: 2px solid #2E3E52;
-  background: #0E1622;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 0 auto;
-  cursor: default;
-  transition: border-color 0.15s;
+  display: none;
 }
 
-.moon-clickable.can-click .photo-placeholder-box {
+#moon-thumb-img {
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #2E3E52;
+  border-radius: 2px;
+  cursor: default;
+  transition: border-color 0.15s;
+  display: block;
+}
+
+.moon-clickable.can-click #moon-thumb-img {
   border-color: #5A7A7A;
   cursor: pointer;
 }
 
-.moon-clickable.can-click .photo-placeholder-box:hover {
+.moon-clickable.can-click #moon-thumb-img:hover {
   border-color: #8AAAC0;
+}
+
+#moon-full-img {
+  max-width: 80vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 2px solid #3A4E62;
+  border-radius: 2px;
 }
 
 .photo-placeholder-icon {

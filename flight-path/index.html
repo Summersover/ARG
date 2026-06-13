@@ -19,30 +19,7 @@
   </div>
 
   <!-- ====== 航线可视化 ====== -->
-  <div id="map-area">
-    <div class="map-label map-label-corsica">科西嘉岛<br /><span class="map-label-sub">起飞点</span></div>
-    <div class="map-label map-label-sea">地中海</div>
-    <div class="map-label map-label-last">最后已知位置<br /><span class="map-label-sub">✞</span></div>
-
-    <!-- 虚线航线 -->
-    <svg class="flight-svg" viewBox="0 0 600 400">
-      <defs>
-        <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-          <polygon points="0 0, 8 3, 0 6" fill="rgba(200,180,140,0.4)" />
-        </marker>
-      </defs>
-      <!-- 虚线航线 -->
-      <path d="M 80 320 Q 200 280, 350 200 T 520 120"
-            fill="none"
-            stroke="rgba(200,180,140,0.35)"
-            stroke-width="1.5"
-            stroke-dasharray="6 4"
-            marker-end="url(#arrowhead)" />
-      <!-- 终点标记 -->
-      <circle cx="520" cy="120" r="5" fill="none" stroke="rgba(200,180,140,0.5)" stroke-width="1.5" />
-      <circle cx="520" cy="120" r="1.5" fill="rgba(200,180,140,0.6)" />
-    </svg>
-  </div>
+  <img id="flight-map-img" src="/images/flight-map.png" alt="航线图" />
 
   <!-- ====== 说明文字 ====== -->
   <div id="chart-text">
